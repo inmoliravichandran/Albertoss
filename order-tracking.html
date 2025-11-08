@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Albatross - Order Tracking</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff9800;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .status {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #28a745;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Albatross</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="profile.html">Profile</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- Tracking Section -->
+  <div class="container">
+    <h2>Track Your Order</h2>
+    <input type="text" id="orderId" placeholder="Enter Order ID">
+    <br>
+    <button id="trackBtn">Track Order</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Albatross | <a href="privacy.html" style="color:#ff9800;">Privacy Policy</a></p>
+  </footer>
+
+  <!-- Inline JavaScript -->
+  <script>
+    const trackBtn = document.getElementById("trackBtn");
+    const statusDiv = document.getElementById("status");
+
+    // Sample order data (simulate order tracking)
+    const orders = [
+      { id: "1001", status: "Processing" },
+      { id: "1002", status: "Shipped" },
+      { id: "1003", status: "Out for Delivery" },
+      { id: "1004", status: "Delivered" }
+    ];
+
+    trackBtn.addEventListener("click", function() {
+      const orderId = document.getElementById("orderId").value.trim();
+      if (!orderId) {
+        alert("Please enter an Order ID.");
+        return;
+      }
+
+      const order = orders.find(o => o.id === orderId);
+      if (order) {
+        statusDiv.textContent = `Order ID ${order.id} Status: ${order.status}`;
+      } else {
+        statusDiv.textContent = `Order ID ${orderId} not found.`;
+        statusDiv.style.color = "#dc3545";
+      }
+    });
+  </script>
+
+</body>
+</html>

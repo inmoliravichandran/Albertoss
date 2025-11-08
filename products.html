@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Albatross - Products</title>
+  <style>
+    /* Inline CSS */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff9800;
+    }
+    h2 {
+      text-align: center;
+      margin: 30px 0 10px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 40px;
+    }
+    .product {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .product:hover {
+      transform: scale(1.05);
+    }
+    .product img {
+     width: 100%;
+    height: 50vh;   /* Takes 50% of viewport height */
+    object-fit: cover;
+    border-radius: 12px;
+
+    }
+    .product h3 {
+      margin: 15px 0 10px;
+    }
+    .product button {
+      background: #ff9800;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .product button:hover {
+      background: #e68900;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Albatross</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
+  <h2>Our Products</h2>
+
+  <!-- Product Grid -->
+  <section class="products">
+    <div class="product">
+      <img src="OIP.jpg" alt="Watch">
+      <h3>Luxury Watch</h3>
+      <p>$120</p>
+      <button onclick="addToCart('Luxury Watch')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="images/handbag.jpg" alt="Handbag">
+      <h3>Designer Handbag</h3>
+      <p>$250</p>
+      <button onclick="addToCart('Designer Handbag')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="images/slippers.jpg" alt="Slippers">
+      <h3>Stylish Slippers</h3>
+      <p>$60</p>
+      <button onclick="addToCart('Stylish Slippers')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="images/jacket.jpg" alt="Jacket">
+      <h3>Winter Jacket</h3>
+      <p>$180</p>
+      <button onclick="addToCart('Winter Jacket')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="images/shoes.jpg" alt="Shoes">
+      <h3>Classic Shoes</h3>
+      <p>$95</p>
+      <button onclick="addToCart('Classic Shoes')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="images/sunglasses.jpg" alt="Sunglasses">
+      <h3>Trendy Sunglasses</h3>
+      <p>$75</p>
+      <button onclick="addToCart('Trendy Sunglasses')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="images/necklace.jpg" alt="Necklace">
+      <h3>Gold Necklace</h3>
+      <p>$320</p>
+      <button onclick="addToCart('Gold Necklace')">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="images/perfume.jpg" alt="Perfume">
+      <h3>Luxury Perfume</h3>
+      <p>$150</p>
+      <button onclick="addToCart('Luxury Perfume')">Add to Cart</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Albatross | <a href="privacy.html" style="color:#ff9800;">Privacy Policy</a></p>
+  </footer>
+
+  <!-- Inline JavaScript -->
+  <script>
+    function addToCart(product) {
+      alert(product + " added to cart!");
+      // Later: Save to localStorage for cart.html
+    }
+  </script>
+
+</body>
+</html>

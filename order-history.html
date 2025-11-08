@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Albatross - Order History</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff9800;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    td a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    td a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Albatross</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="profile.html">Profile</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- Order History -->
+  <div class="container">
+    <h2>Order History</h2>
+    <table id="orderTable">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Products</th>
+          <th>Total ($)</th>
+          <th>Status</th>
+          <th>Track</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Orders will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Albatross | <a href="privacy.html" style="color:#ff9800;">Privacy Policy</a></p>
+  </footer>
+
+  <!-- Inline JavaScript -->
+  <script>
+    const orderTable = document.getElementById("orderTable").querySelector("tbody");
+
+    // Sample order history (replace with backend or localStorage in real use)
+    const orders = JSON.parse(localStorage.getItem("orders")) || [
+      {
+        id: "1001",
+        date: "2025-09-01",
+        products: "Luxury Watch x1",
+        total: 250,
+        status: "Delivered"
+      },
+      {
+        id: "1002",
+        date: "2025-09-02",
+        products: "Designer Handbag x1, Stylish Slippers x2",
+        total: 450,
+        status: "Shipped"
+      }
+    ];
+
+    function renderOrders() {
+      orderTable.innerHTML = "";
+      if (orders.length === 0) {
+        orderTable.innerHTML = `<tr><td colspan="6">No orders found.</td></tr>`;
+        return;
+      }
+      orders.forEach(order => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${order.id}</td>
+          <td>${order.date}</td>
+          <td>${order.products}</td>
+          <td>${order.total}</td>
+          <td>${order.status}</td>
+          <td><a href="tracking.html">Track</a></td>
+        `;
+        orderTable.appendChild(tr);
+      });
+    }
+
+    renderOrders();
+  </script>
+
+</body>
+</html>

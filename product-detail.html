@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Albatross - Product Details</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff9800;
+    }
+    .container {
+      display: flex;
+      max-width: 900px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .image-section {
+      flex: 1;
+      padding: 20px;
+    }
+    .image-section img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .details-section {
+      flex: 1;
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    p {
+      margin: 10px 0;
+    }
+    .price {
+      font-size: 22px;
+      color: #ff9800;
+      margin: 15px 0;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      margin-left: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      display: block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Albatross</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <!-- Product Details -->
+  <div class="container">
+    <div class="image-section">
+      <img src="https://via.placeholder.com/400x400.png?text=Product+Image" alt="Product Image">
+    </div>
+    <div class="details-section">
+      <h2>Luxury Watch</h2>
+      <p>High-quality, designer luxury watch perfect for both men and women. Crafted with precision and style.</p>
+      <p class="price">$250</p>
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" value="1" min="1">
+      <button id="addToCartBtn">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Albatross | <a href="privacy.html" style="color:#ff9800;">Privacy Policy</a></p>
+  </footer>
+
+  <!-- Inline JavaScript -->
+  <script>
+    const addToCartBtn = document.getElementById("addToCartBtn");
+    const quantityInput = document.getElementById("quantity");
+
+    addToCartBtn.addEventListener("click", function() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const product = {
+        name: "Luxury Watch",
+        price: 250,
+        quantity: parseInt(quantityInput.value)
+      };
+
+      // Check if product already exists in cart
+      const existingIndex = cart.findIndex(item => item.name === product.name);
+      if (existingIndex !== -1) {
+        cart[existingIndex].quantity += product.quantity;
+      } else {
+        cart.push(product);
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Product added to cart!");
+    });
+  </script>
+
+</body>
+</html>
